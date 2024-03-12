@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,8 +23,11 @@ public class QuestionService {
 
     public List<QuestionDTO> getAllQuestions() {
         List<Question> allQuestions = questionsDAO.getAllQuestions();
-        // TODO convert data to QuestionDTO
-        return List.of(new QuestionDTO(1, "Example Title", "Example Description", LocalDateTime.now()));
+        List<QuestionDTO> convertedQuestions = new ArrayList<>();
+        for (Question question : allQuestions) {
+            convertedQuestions.add(new QuestionDTO(question.id(), question.title(), question.description(), question.creation_date()));
+        }
+        return convertedQuestions;
     }
 
     public QuestionDTO getQuestionById(int id) {
