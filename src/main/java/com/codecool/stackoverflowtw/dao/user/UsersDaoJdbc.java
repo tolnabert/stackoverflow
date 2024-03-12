@@ -26,9 +26,9 @@ public class UsersDaoJdbc implements UsersDao {
 
                 while (rs.next()) {
                     User user = new User(
-                            rs.getInt("id"),
+                            rs.getInt("user_id"),
                             rs.getString("user_name"),
-                            rs.getString("password"),
+                            rs.getString("user_password"),
                             rs.getTimestamp("register_date").toLocalDateTime()
                     );
                     users.add(user);
@@ -42,7 +42,7 @@ public class UsersDaoJdbc implements UsersDao {
 
     @Override
     public User getUserById(int id) {
-        String sql = "SELECT * FROM users WHERE id = ?";
+        String sql = "SELECT * FROM users WHERE user_id = ?";
 
         try (Connection conn = DataBase.connect()) {
             assert conn != null;
@@ -53,9 +53,9 @@ public class UsersDaoJdbc implements UsersDao {
                 try (ResultSet rs = pstmt.executeQuery()) {
                     if (rs.next()) {
                         return new User(
-                                rs.getInt("id"),
+                                rs.getInt("user_id"),
                                 rs.getString("user_name"),
-                                rs.getString("password"),
+                                rs.getString("user_password"),
                                 rs.getTimestamp("register_date").toLocalDateTime()
                         );
                     }
