@@ -1,12 +1,12 @@
 package com.codecool.stackoverflowtw.configuration;
 
-import com.codecool.stackoverflowtw.dao.questioon.QuestionsDAO;
-import com.codecool.stackoverflowtw.dao.questioon.QuestionsDaoJdbc;
+import com.codecool.stackoverflowtw.dao.user.UsersDao;
+import com.codecool.stackoverflowtw.dao.user.UsersDaoJdbc;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class QuestionDaoConfiguration {
+public class UsersDaoConfiguration {
 
     private final static String URL = System.getenv("POSTGRES_URL");
     private final static String USER = System.getenv("POSTGRES_USER");
@@ -16,7 +16,8 @@ public class QuestionDaoConfiguration {
 //    private String databaseUrl;
 
     @Bean
-    public QuestionsDAO questionsDAO() {
-        return new QuestionsDaoJdbc();
+    public UsersDao usersDao() {
+        return new UsersDaoJdbc();
     }
 }
+

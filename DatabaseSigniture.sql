@@ -2,7 +2,7 @@
 --     test VARCHAR(5)
 -- );
 
-CREATE TABLE IF NOT EXISTS "user"
+CREATE TABLE IF NOT EXISTS "users"
 (
     user_id       SERIAL PRIMARY KEY,
     user_name     VARCHAR(15) UNIQUE NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS "user"
 );
 
 
-CREATE TABLE IF NOT EXISTS question
+CREATE TABLE IF NOT EXISTS questions
 (
     question_id   SERIAL PRIMARY KEY,
     title         VARCHAR(15)  NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS question
     creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS answer
+CREATE TABLE IF NOT EXISTS answers
 (
     answer_id       SERIAL PRIMARY KEY,
     message         VARCHAR(250),
