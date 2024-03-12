@@ -1,5 +1,6 @@
 package com.codecool.stackoverflowtw.service;
 
+import com.codecool.stackoverflowtw.controller.dto.user.NewUserDto;
 import com.codecool.stackoverflowtw.controller.dto.user.UserDto;
 import com.codecool.stackoverflowtw.dao.user.UsersDao;
 import com.codecool.stackoverflowtw.dao.user.model.User;
@@ -31,5 +32,17 @@ public class UserService {
         User user = usersDao.getUserById(id);
 
         return new UserDto(user.id(), user.userName(), user.password(), user.registerDate());
+    }
+
+    public int addNewUser(NewUserDto newUser) {
+        return usersDao.addNewUser(newUser);
+    }
+
+    public boolean updateUser(int id, UserDto user) {
+        return usersDao.updateUser(id, user.userName(), user.password());
+    }
+
+    public boolean deleteUser(int id) {
+        return usersDao.deleteUser(id);
     }
 }

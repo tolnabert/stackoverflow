@@ -31,13 +31,16 @@ public class UserController {
 
     @PostMapping("/")
     public int addNewUser(@RequestBody NewUserDto user) {
-//        TODO
-        throw new UnsupportedOperationException();
+        return userService.addNewUser(user);
     }
 
     @DeleteMapping("/{id}")
     public boolean deleteUserById(@PathVariable int id) {
-//        TODO
-        throw new UnsupportedOperationException();
+        return userService.deleteUser(id);
+    }
+
+    @PatchMapping("/{id}")
+    public boolean updateUserById(@PathVariable int id, @RequestBody UserDto user) {
+        return userService.updateUser(id, user);
     }
 }
