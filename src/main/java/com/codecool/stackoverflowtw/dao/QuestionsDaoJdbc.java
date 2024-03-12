@@ -22,7 +22,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
             assert conn != null;
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-                var rs = stmt.executeQuery(sql);
+                var rs = stmt.executeQuery();
 
                 while (rs.next()) {
                     var product = new Question(
