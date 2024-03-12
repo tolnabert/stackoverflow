@@ -27,8 +27,8 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserDto getUserById() {
-        User user = usersDao.getUserById();
+    public UserDto getUserById(int id) {
+        User user = usersDao.getUserById(id);
 
         return new UserDto(user.id(), user.userName(), user.password(), user.registerDate());
     }
