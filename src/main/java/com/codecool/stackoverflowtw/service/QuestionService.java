@@ -22,9 +22,8 @@ public class QuestionService {
     public List<QuestionDTO> getAllQuestions() {
         List<Question> allQuestions = questionsDAO.getAllQuestions();
         List<QuestionDTO> convertedQuestions = new ArrayList<>();
-        System.out.println(allQuestions);
         for (Question question : allQuestions) {
-            convertedQuestions.add(new QuestionDTO(question.id(), question.title(), question.description(), question.creation_date()));
+            convertedQuestions.add(new QuestionDTO(question.question_id(), question.title(), question.description(), question.creation_date()));
         }
         return convertedQuestions;
     }
@@ -32,7 +31,7 @@ public class QuestionService {
     public QuestionDTO getQuestionById(int id) {
         Question question = questionsDAO.getQuestionById(id);
         System.out.println(question);
-        return new QuestionDTO(question.id(), question.title(), question.description(), question.creation_date());
+        return new QuestionDTO(question.question_id(), question.title(), question.description(), question.creation_date());
     }
     public int addNewQuestion(NewQuestionDTO question) {
         questionsDAO.addNewQuestion(question);
