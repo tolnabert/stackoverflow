@@ -1,4 +1,4 @@
 package com.codecool.stackoverflowtw.controller.dto.question;
 
-public record NewQuestionDTO(String title, String description) {
+public record NewQuestionDTO(int userId, String title, String description) {
 }

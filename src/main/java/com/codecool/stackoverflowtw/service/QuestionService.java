@@ -7,15 +7,12 @@ import com.codecool.stackoverflowtw.dao.questioon.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class QuestionService {
-
     private final QuestionsDAO questionsDAO;
-
     @Autowired
     public QuestionService(QuestionsDAO questionsDAO) {
         this.questionsDAO = questionsDAO;
@@ -25,23 +22,22 @@ public class QuestionService {
         List<Question> allQuestions = questionsDAO.getAllQuestions();
         List<QuestionDTO> convertedQuestions = new ArrayList<>();
         for (Question question : allQuestions) {
-            convertedQuestions.add(new QuestionDTO(question.id(), question.title(), question.description(), question.creation_date()));
+            convertedQuestions.add(new QuestionDTO(question.question_id(), question.title(), question.description(), question.creation_date()));
         }
         return convertedQuestions;
     }
 
     public QuestionDTO getQuestionById(int id) {
-        // TODO
-        throw new UnsupportedOperationException();
+        Question question = questionsDAO.getQuestionById(id);
+        System.out.println(question);
+        return new QuestionDTO(question.question_id(), question.title(), question.description(), question.creation_date());
     }
-
-    public boolean deleteQuestionById(int id) {
-        // TODO
-        throw new UnsupportedOperationException();
-    }
-
     public int addNewQuestion(NewQuestionDTO question) {
-        // TODO
-        throw new UnsupportedOperationException();
+        questionsDAO.addNewQuestion(question);
+        return 0;
+    }
+    public boolean deleteQuestionById(int id) {
+        questionsDAO.deleteQuestionById(id);
+        return true;
     }
 }
