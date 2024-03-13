@@ -38,15 +38,8 @@ public class AnswerController {
         return answerService.updateAnswerById(id, answer.message());
     }
 
-    //TODO the rest based on question service
-
-//        @PostMapping("/")
-//        public int addNewQuestion(@RequestBody NewQuestionDTO question) {
-//            return answerService.addNewQuestion(question);
-//        }
-//
-//        @DeleteMapping("/{id}")
-//        public boolean deleteQuestionById(@PathVariable int id) {
-//            return answerService.deleteQuestionById(id);
-//        }
+    @DeleteMapping("/{userId}/{answerId}")
+    public boolean deleteAnswerById(@PathVariable int userId, @PathVariable int answerId) {
+        return answerService.deleteAnswerById(userId, answerId);
+    }
 }
