@@ -42,4 +42,8 @@ public class AnswerService {
     public boolean postNewAnswer(int id, NewAnswerDTO answerDTO) {
         return answersDAO.postNewAnswer(id, answerDTO);
     }
+
+    public boolean deleteAnswerById(int userId, int answerId) {
+        return answersDAO.deleteAnswerById(userId, answerId);
+    }
 }
