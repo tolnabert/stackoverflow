@@ -2,9 +2,7 @@
 --     test VARCHAR(5)
 -- );
 
-DROP TABLE IF EXISTS "users";
-DROP TABLE IF EXISTS questions;
-DROP TABLE IF EXISTS answers;
+DROP TABLE IF EXISTS "users", questions, answers;
 
 CREATE TABLE IF NOT EXISTS "users"
 (
