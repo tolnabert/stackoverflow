@@ -1,19 +1,17 @@
-package com.codecool.stackoverflowtw.dao;
+package com.codecool.stackoverflowtw.dao.questioon;
 
 import com.codecool.stackoverflowtw.DataBase;
-import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
-import com.codecool.stackoverflowtw.dao.model.Question;
+import com.codecool.stackoverflowtw.controller.dto.question.NewQuestionDTO;
+import com.codecool.stackoverflowtw.dao.questioon.model.Question;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class QuestionsDaoJdbc implements QuestionsDAO {
 
     @Override
     public List<Question> getAllQuestions() {
-        // TODO SQL query questions from database
         List<Question> questions = new ArrayList<>();
 
         var sql = "SELECT question_id, title, description, creation_date FROM questions";
@@ -22,7 +20,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
             assert conn != null;
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-                var rs = stmt.executeQuery();
+                ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {
                     var product = new Question(
@@ -39,10 +37,11 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
         return questions;
     }
 
+    @Override
     public Question getQuestionById(int id) {
-        var sql = "SELECT question_id, title, description, creation_date FROM questions WHERE question_id=?";
+        String sql = "SELECT question_id, title, description, creation_date FROM questions WHERE question_id=?";
 
-        try (var conn = DataBase.connect()) {
+        try (Connection conn = DataBase.connect()) {
             assert conn != null;
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -62,19 +61,19 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
         return null;
     }
 
+    @Override
     public int addNewQuestion(NewQuestionDTO question) {
-        var sql = "INSERT INTO questions(title, description) "
-                + "VALUES(?,?)";
+        String sql = "INSERT INTO questions(title, description, user_id) "
+                + "VALUES(?,?,?)";
 
         try (Connection conn = DataBase.connect()) {
             assert conn != null;
             try (PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-                // bind the values
                 pstmt.setString(1, question.title());
                 pstmt.setString(2, question.description());
+                pstmt.setInt(3, question.userId());
 
-                // execute the INSERT statement and get the inserted id
                 int insertedRow = pstmt.executeUpdate();
                 if (insertedRow > 0) {
                     ResultSet rs = pstmt.getGeneratedKeys();
@@ -92,7 +91,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
     @Override
     public int deleteQuestionById(int id) {
-        var sql = "DELETE FROM questions WHERE id=?";
+        String sql = "DELETE FROM questions WHERE id=?";
 
         try (Connection conn = DataBase.connect()) {
             assert conn != null;
