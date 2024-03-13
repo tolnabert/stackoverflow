@@ -1,13 +1,9 @@
 package com.codecool.stackoverflowtw.controller;
 
-import com.codecool.stackoverflowtw.controller.dto.NewQuestionDTO;
-import com.codecool.stackoverflowtw.controller.dto.QuestionDTO;
 import com.codecool.stackoverflowtw.controller.dto.answer.AnswerDTO;
+import com.codecool.stackoverflowtw.controller.dto.answer.NewAnswerDTO;
 import com.codecool.stackoverflowtw.service.AnswerService;
-import com.codecool.stackoverflowtw.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +21,11 @@ public class AnswerController {
     @GetMapping("/{id}/all")
     public List<AnswerDTO> getAllAnswersForQuestion(@PathVariable int id) {
         return answerService.getAllAnswersForQuestion(id);
+    }
+
+    @PostMapping("/{questionId}")
+    public boolean postNewAnswer(@PathVariable int questionId, @RequestBody NewAnswerDTO answerDTO) {
+        return answerService.postNewAnswer(questionId, answerDTO);
     }
 
     @GetMapping("/{id}")
