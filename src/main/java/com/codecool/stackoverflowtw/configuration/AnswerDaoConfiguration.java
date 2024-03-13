@@ -1,5 +1,6 @@
 package com.codecool.stackoverflowtw.configuration;
 
+import com.codecool.stackoverflowtw.DataBase;
 import com.codecool.stackoverflowtw.dao.answer.AnswersDAO;
 import com.codecool.stackoverflowtw.dao.answer.AnswersDaoJdbc;
 import org.springframework.context.annotation.Bean;

@@ -85,6 +85,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return -1;
     }
 
