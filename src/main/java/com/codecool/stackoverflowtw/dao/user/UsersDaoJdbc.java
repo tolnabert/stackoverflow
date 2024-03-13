@@ -13,7 +13,7 @@ public class UsersDaoJdbc implements UsersDao {
 
     public static final String SELECT_ALL_USERS = "SELECT * FROM users";
     public static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE user_id = ?";
-    public static final String ADD_NEW_USER = "INSERT INTO users (user_name, user_password, register_date) VALUES (?, ?, ?)";
+    public static final String ADD_NEW_USER = "INSERT INTO users (user_name, user_password) VALUES (?, ?)";
     public static final String DELETE_USER_BY_ID = "DELETE FROM users WHERE user_id = ?";
     public static final String UPDATE_USER_BY_ID = "UPDATE users SET user_name = ?, user_password = ? WHERE user_id = ?";
 
