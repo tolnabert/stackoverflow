@@ -65,16 +65,19 @@ public class UsersDaoJdbc implements UsersDao {
 
     @Override
     public int addNewUser(NewUserDto newUser) {
-        try (Connection conn = DataBase.connect();
-             PreparedStatement pstmt = conn.prepareStatement(ADD_NEW_USER)) {
 
-            pstmt.setString(1, newUser.userName());
-            pstmt.setString(2, newUser.password());
+        if (getUserByName(newUser.userName()) == null) {
+            try (Connection conn = DataBase.connect();
+                 PreparedStatement pstmt = conn.prepareStatement(ADD_NEW_USER)) {
 
-            return pstmt.executeUpdate();
+                pstmt.setString(1, newUser.userName());
+                pstmt.setString(2, newUser.password());
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+                return pstmt.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return -1;
     }
