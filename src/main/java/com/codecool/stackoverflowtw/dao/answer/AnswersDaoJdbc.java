@@ -15,10 +15,7 @@ public class AnswersDaoJdbc implements AnswersDAO {
     public List<Answer> getAllAnswersForQuestion(int question_id) {
         List<Answer> answers = new ArrayList<>();
 
-        var sql = "SELECT a.answer_id, a.message, a.user_id, a.question_id, a.submission_time " +
-                "FROM answers a " +
-                "WHERE a.question_id = ? " +
-                "ORDER BY a.submission_time";
+        var sql = "SELECT a.answer_id, a.message, a.user_id, a.question_id, a.submission_time " + "FROM answers a " + "WHERE a.question_id = ? " + "ORDER BY a.submission_time";
 
         try (Connection conn = DataBase.connect()) {
             if (conn == null) {
@@ -29,12 +26,7 @@ public class AnswersDaoJdbc implements AnswersDAO {
                 var rs = stmt.executeQuery();
 
                 while (rs.next()) {
-                    var answer = new Answer(
-                            rs.getInt("answer_id"),
-                            rs.getString("message"),
-                            rs.getInt("user_id"),
-                            rs.getInt("question_id"),
-                            rs.getTimestamp("submission_time").toLocalDateTime());
+                    var answer = new Answer(rs.getInt("answer_id"), rs.getString("message"), rs.getInt("user_id"), rs.getInt("question_id"), rs.getTimestamp("submission_time").toLocalDateTime());
                     answers.add(answer);
                 }
             }
@@ -49,8 +41,7 @@ public class AnswersDaoJdbc implements AnswersDAO {
     public Answer getAnswer(int answer_id) {
         Answer answer = null;
 
-        var sql = "SELECT answer_id, message, user_id, question_id, submission_time FROM answers " +
-                "WHERE answer_id = ?";
+        var sql = "SELECT answer_id, message, user_id, question_id, submission_time FROM answers " + "WHERE answer_id = ?";
 
         try (Connection conn = DataBase.connect()) {
             if (conn == null) {
@@ -62,12 +53,7 @@ public class AnswersDaoJdbc implements AnswersDAO {
                 var rs = stmt.executeQuery();
 
                 if (rs.next()) {
-                    answer = new Answer(
-                            rs.getInt("answer_id"),
-                            rs.getString("message"),
-                            rs.getInt("user_id"),
-                            rs.getInt("question_id"),
-                            rs.getTimestamp("submission_time").toLocalDateTime());
+                    answer = new Answer(rs.getInt("answer_id"), rs.getString("message"), rs.getInt("user_id"), rs.getInt("question_id"), rs.getTimestamp("submission_time").toLocalDateTime());
                 }
             }
         } catch (SQLException e) {
@@ -78,9 +64,7 @@ public class AnswersDaoJdbc implements AnswersDAO {
 
     @Override
     public boolean updateAnswerById(int answer_id, String message) {
-        var sql = "UPDATE answers SET " +
-                "message = ? " +
-                "WHERE answer_id = ?";
+        var sql = "UPDATE answers SET " + "message = ? " + "WHERE answer_id = ?";
 
         try (Connection conn = DataBase.connect()) {
             if (conn == null) {
@@ -102,8 +86,7 @@ public class AnswersDaoJdbc implements AnswersDAO {
     @Override
     public boolean postNewAnswer(int id, NewAnswerDTO answerDTO) {
         //String message, int user_id, int question_id
-        String sql = "INSERT INTO answers(message, user_id, question_id) " +
-                "VALUES (?, ?, ?);";
+        String sql = "INSERT INTO answers(message, user_id, question_id) " + "VALUES (?, ?, ?);";
 
 
         try (Connection conn = DataBase.connect()) {
@@ -123,5 +106,30 @@ public class AnswersDaoJdbc implements AnswersDAO {
         }
         return false;
 
+    }
+
+    @Override
+    public boolean deleteAnswerById(int userId, int answerId) {
+
+        Answer answer = getAnswer(answerId);
+        if (answer != null && answer.user_id() == userId) {
+
+            String sql = "DELETE FROM answers WHERE answer_id = ?;";
+            try (Connection conn = DataBase.connect()) {
+                if (conn == null) {
+                    return false;
+                }
+                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setInt(1, answerId);
+
+                    int rs = pstmt.executeUpdate();
+                    return rs > 0;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+        return false;
     }
 }

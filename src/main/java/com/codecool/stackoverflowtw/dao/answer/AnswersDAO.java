@@ -14,4 +14,6 @@ public interface AnswersDAO {
     boolean updateAnswerById(int answer_id, String message);
 
     boolean postNewAnswer(int id, NewAnswerDTO answerDTO);
+
+    boolean deleteAnswerById(int userId, int answerId);
 }
