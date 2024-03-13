@@ -32,7 +32,11 @@ public class AnswerService {
 
     public AnswerDTO getAnswer(int answer_id) {
        Answer answer = answersDAO.getAnswer(answer_id);
-        return new AnswerDTO(answer.answer_id(), answer.message(), answer.user_id(), answer.question_id(), answer.submission_time());
+        return new AnswerDTO(answer.answer_id(),
+                answer.message(),
+                answer.user_id(),
+                answer.question_id(),
+                answer.submission_time());
     }
 
     public boolean updateAnswerById(int answer_id, String newMessage) {
