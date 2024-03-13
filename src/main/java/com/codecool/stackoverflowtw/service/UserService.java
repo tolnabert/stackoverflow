@@ -45,4 +45,8 @@ public class UserService {
     public boolean deleteUser(int id) {
         return usersDao.deleteUser(id);
     }
+
+    public int logInUser(NewUserDto userDto) {
+        return usersDao.loginUser(userDto);
+    }
 }

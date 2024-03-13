@@ -30,6 +30,11 @@ public class UserController {
     }
 
     @PostMapping("/")
+    public int loginUser(@RequestBody NewUserDto userDto) {
+        return userService.logInUser(userDto);
+    }
+
+    @PostMapping("/")
     public int addNewUser(@RequestBody NewUserDto user) {
         return userService.addNewUser(user);
     }

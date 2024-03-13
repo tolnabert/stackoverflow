@@ -16,4 +16,6 @@ public interface UsersDao {
     boolean updateUser(int id, String userName, String password);
 
     int addNewUser(NewUserDto newUser);
+
+    int loginUser(NewUserDto userDto);
 }

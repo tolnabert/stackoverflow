@@ -8,11 +8,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class UsersDaoJdbc implements UsersDao {
 
     public static final String SELECT_ALL_USERS = "SELECT * FROM users";
     public static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE user_id = ?";
+    public static final String SELECT_USER_BY_USERNAME = "SELECT * FROM users WHERE user_name = ?";
     public static final String ADD_NEW_USER = "INSERT INTO users (user_name, user_password, register_date) VALUES (?, ?, ?)";
     public static final String DELETE_USER_BY_ID = "DELETE FROM users WHERE user_id = ?";
     public static final String UPDATE_USER_BY_ID = "UPDATE users SET user_name = ?, user_password = ? WHERE user_id = ?";
@@ -58,7 +60,6 @@ public class UsersDaoJdbc implements UsersDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         throw new NoSuchElementException("No user found with ID: " + id);
     }
 
@@ -76,6 +77,37 @@ public class UsersDaoJdbc implements UsersDao {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    @Override
+    public int loginUser(NewUserDto userDto) {
+        User user = getUserByName(userDto.userName());
+        if (user != null) {
+            if (Objects.equals(user.password(), userDto.password())) {
+                return user.id();
+            }
+        }
+        return -1;
+    }
+
+    private User getUserByName(String username) {
+        try (Connection conn = DataBase.connect();
+             PreparedStatement pstmt = conn.prepareStatement(SELECT_USER_BY_USERNAME)) {
+
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("user_id"),
+                        rs.getString("user_name"),
+                        rs.getString("user_password"),
+                        rs.getTimestamp("register_date").toLocalDateTime()
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
