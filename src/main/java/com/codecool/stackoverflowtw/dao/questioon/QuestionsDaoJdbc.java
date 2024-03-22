@@ -14,7 +14,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
     public List<Question> getAllQuestions() {
         List<Question> questions = new ArrayList<>();
 
-        var sql = "SELECT question_id, title, description, creation_date FROM questions";
+        var sql = "SELECT question_id, title, description, user_id,  creation_date FROM questions";
 
         try (Connection conn = DataBase.connect()) {
             assert conn != null;
@@ -27,6 +27,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
                             rs.getInt("question_id"),
                             rs.getString("title"),
                             rs.getString("description"),
+                            rs.getInt("user_id"),
                             rs.getTimestamp("creation_date").toLocalDateTime());
                     questions.add(product);
                 }
@@ -39,7 +40,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
     @Override
     public Question getQuestionById(int id) {
-        String sql = "SELECT question_id, title, description, creation_date FROM questions WHERE question_id=?";
+        String sql = "SELECT question_id, title, description, user_id, creation_date FROM questions WHERE question_id=?";
 
         try (Connection conn = DataBase.connect()) {
             assert conn != null;
@@ -52,6 +53,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
                             rs.getInt("question_id"),
                             rs.getString("title"),
                             rs.getString("description"),
+                            rs.getInt("user_id"),
                             rs.getTimestamp("creation_date").toLocalDateTime());
                 }
             }
@@ -63,6 +65,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
     @Override
     public int addNewQuestion(NewQuestionDTO question) {
+        System.out.println(question);
         String sql = "INSERT INTO questions(title, description, user_id) "
                 + "VALUES(?,?,?)";
 
@@ -91,7 +94,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
     @Override
     public int deleteQuestionById(int id) {
-        String sql = "DELETE FROM questions WHERE id=?";
+        String sql = "DELETE FROM questions WHERE user_id=?";
 
         try (Connection conn = DataBase.connect()) {
             assert conn != null;
