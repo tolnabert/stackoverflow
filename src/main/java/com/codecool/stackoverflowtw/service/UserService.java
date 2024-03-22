@@ -31,7 +31,8 @@ public class UserService {
     public UserDto getUserById(int id) {
         User user = usersDao.getUserById(id);
 
-        return new UserDto(user.id(), user.userName(), user.password(), user.registerDate());
+        return new UserDto(user.id(), user.userName(),
+                user.password(), user.registerDate());
     }
 
     public int addNewUser(NewUserDto newUser) {
