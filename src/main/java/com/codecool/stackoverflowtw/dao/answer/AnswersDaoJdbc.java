@@ -85,7 +85,9 @@ public class AnswersDaoJdbc implements AnswersDAO {
 
     @Override
     public boolean postNewAnswer(int id, NewAnswerDTO answerDTO) {
-        //String message, int user_id, int question_id
+        if (id < 1 || answerDTO.user_id() < 1) {
+            return false;
+        }
         String sql = "INSERT INTO answers(message, user_id, question_id) " + "VALUES (?, ?, ?);";
 
 
