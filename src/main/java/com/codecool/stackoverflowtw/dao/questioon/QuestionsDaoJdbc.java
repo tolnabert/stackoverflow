@@ -65,6 +65,9 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
     @Override
     public int addNewQuestion(NewQuestionDTO question) {
+        if (question.userId() < 1) {
+            return -1;
+        }
         System.out.println(question);
         String sql = "INSERT INTO questions(title, description, user_id) "
                 + "VALUES(?,?,?)";
@@ -94,7 +97,7 @@ public class QuestionsDaoJdbc implements QuestionsDAO {
 
     @Override
     public int deleteQuestionById(int id) {
-        String sql = "DELETE FROM questions WHERE user_id=?";
+        String sql = "DELETE FROM questions WHERE question_id=?";
 
         try (Connection conn = DataBase.connect()) {
             assert conn != null;
