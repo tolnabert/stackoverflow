@@ -14,30 +14,30 @@ Stackoverflow enables users to create new questions, post answers, and manage th
 Project Setup
 
 
-1. Clone this repository:
+### 1. Clone this repository:
 
    ```bash
    git clone https://github.com/tolnabert/stackoverflow.git
    ```
 
-4. Database Configuration:
+### 2. Database Configuration:
 
   - Set up the database connection by configuring environmental variables in the project:
   - Add POSTGRES_USER, POSTGRES_PASSWORD, and POSTGRES_URL to your environment variables.
 
-2. Navigate to the project directory:
+### 3. Navigate to the project directory:
 
    ```bash
    cd stackoveflow
    ```
 
-3. Build the project using Maven:
+### 4. Build the project using Maven:
 
    ```bash
    mvn clean package
    ```
 
-4. Run the application:
+### 5. Run the application:
 
    ```bash
    java -jar target/stackoverflow.jar
