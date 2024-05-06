@@ -11,9 +11,6 @@ Stackoverflow enables users to create new questions, post answers, and manage th
 
 ## Installation Guide
 
-Project Setup
-
-
 ### 1. Clone this repository:
 
    ```bash
