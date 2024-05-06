@@ -1,15 +1,15 @@
-## Stackbelowflow Project Overview
+# Stackbelowflow Project Overview
 
 During our Teamwork week in the Object-Oriented Programming module, we developed Stackoverflow clone Spring Boot Web API, inspired by the popular Stackoverflow site. This project serves as our final team project, focusing on Java and Spring Boot technologies. This repository only focuses on the backend side of the application, the [fronted](https://github.com/korodigergo/stackflow-react3) can be found in a separate repository.
 
-# Project Description
+## Project Description
 
 Stackoverflow enables users to create new questions, post answers, and manage their questions and answers. The technology stack includes:
 
 - Backend: Java (Spring Boot 3) for handling requests and responses.
 - Database: PostgreSQL for efficient data management.
 
-# Installation Guide
+## Installation Guide
 
 Project Setup
 
