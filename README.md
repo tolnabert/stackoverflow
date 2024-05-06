@@ -1,42 +1,53 @@
-# Stackoverflow TW Project
+## Stackbelowflow Project Overview
 
-## Trello:
+During our Teamwork week in the Object-Oriented Programming module, we developed Stackoverflow clone Spring Boot Web API, inspired by the popular Stackoverflow site. This project serves as our final team project, focusing on Java and Spring Boot technologies. This repository only focuses on the backend side of the application, the [fronted](https://github.com/korodigergo/stackflow-react3) can be found in a separate repository.
 
-https://trello.com/b/mnWhJfiE/stackoverflow
+# Project Description
 
-## Tasks:
+Stackoverflow enables users to create new questions, post answers, and manage their questions and answers. The technology stack includes:
 
-- Main page listing all questions with details, date and answer count
-- Feature to sort questions on Main page by alphabet, date or answer count
-- Detail page of a question shows who asked it and lists all answers with date and users
-- Feature to add new question (redirects to question detail page after save)
-- Feature to add new answer (location: question detail page)
-- Feature to delete question (later extend so only the owner can delete it)
-- Feature to delete answer (location: question delete page) (later extend so only the owner can delete it)
-- Feature to Register new user
-- Feature to Login with user and store session (who is currently logged in is always visible on frontend)
-- Feature to Logout user
-- Users list page: shows username, registration date, number of questions, number of answers
-- Feature to mark the accepted answer for the user's own question
-- Write tests for the service layer
+- Backend: Java (Spring Boot 3) for handling requests and responses.
+- Database: PostgreSQL for efficient data management.
 
-#### Extra:
+# Installation Guide
 
-- OPTIONAL: Admin user type can delete any question or answer
-- OPTIONAL: Filter by question titles  (location: main page)
-- OPTIONAL: Feature to tag questions
-- OPTIONAL: Feature to edit questions (limited to the ones created by the user)
-- OPTIONAL: Feature to edit answers (limited to the ones created by the user)
-- OPTIONAL: Feature to calculate reputation of the user and display them differently if they are very active on the
-  site (display reputation on user list page too)
+Project Setup
 
-## General requirements:
 
-- Create an SQL database to store your data
-- Stick to Model View Controller layers (Frontend doesn't do calculations, only displays the data, SQL handles the data
-  manipulation)
-- Do the base data features first and add user management later, extend already existing ones if necessary
-- Aim for the code to keep SOLID, OOP and Clean code principles
-- Focus on the Java & SQL parts and do minimal frontend as it is not the goal of this project
-- Vanilla Javascript and HTML is suggested for frontend, nothing more complicated (like frameworks) is necessary
-- If you need new API endpoints ask mentors to create them for you
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/tolnabert/stackoverflow.git
+   ```
+
+4. Database Configuration:
+
+  - Set up the database connection by configuring environmental variables in the project:
+  - Add POSTGRES_USER, POSTGRES_PASSWORD, and POSTGRES_URL to your environment variables.
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd stackoveflow
+   ```
+
+3. Build the project using Maven:
+
+   ```bash
+   mvn clean package
+   ```
+
+4. Run the application:
+
+   ```bash
+   java -jar target/stackoverflow.jar
+   ```
+
+### Features
+
+- Register with fictional information (username and password).
+- Login to the site.
+- Post new questions.
+- Post new answers.
+- Manage your questions by deleting them.
+- Manage your answers by deleting them.
