@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 <!-- PROJECT SHIELDS -->
 [![Contributors][contributors-shield]][contributors-url]
 
@@ -24,6 +25,8 @@
 
 During our Teamwork week in the Object-Oriented Programming module, we developed Stackoverflow clone Spring Boot Web API, inspired by the popular Stackoverflow site. This project serves as our final team project, focusing on Java and Spring Boot technologies. This repository only focuses on the backend side of the application, the [fronted](https://github.com/korodigergo/stackflow-react3) can be found in a separate repository.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Project Description
 
 Stackoverflow enables users to create new questions, post answers, and manage their questions and answers. The technology stack includes:
@@ -31,10 +34,14 @@ Stackoverflow enables users to create new questions, post answers, and manage th
 - Backend: Java (Spring Boot 3) for handling requests and responses.
 - Database: PostgreSQL for efficient data management.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Built With
 
 * [![PostgreSQL][PostgreSQL.org]][PostgreSQL-url]
 * [![Spring][Spring.io]][Spring-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Installation Guide
 
@@ -67,6 +74,8 @@ Stackoverflow enables users to create new questions, post answers, and manage th
    java -jar target/stackoverflow.jar
    ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Features
 
 - Register with fictional information (username and password).
@@ -75,6 +84,8 @@ Stackoverflow enables users to create new questions, post answers, and manage th
 - Post new answers.
 - Manage your questions by deleting them.
 - Manage your answers by deleting them.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [Spring-url]: https://spring.io/projects/spring-boot
