@@ -1,7 +1,26 @@
 <!-- PROJECT SHIELDS -->
 [![Contributors][contributors-shield]][contributors-url]
 
-# Stackoverflow Project Overview
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#stackoverflow-project-overview">Stackoverflow Project Overview</a>
+    </li>
+    <li>
+      <a href="#project-description">Project Description</a>
+      <ul>
+        <li>
+           <a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#installation-guide">Installation Guide</a></li>
+    <li><a href="#features">Features</a></li>
+  </ol>
+</details>
+
+## Stackoverflow Project Overview
 
 During our Teamwork week in the Object-Oriented Programming module, we developed Stackoverflow clone Spring Boot Web API, inspired by the popular Stackoverflow site. This project serves as our final team project, focusing on Java and Spring Boot technologies. This repository only focuses on the backend side of the application, the [fronted](https://github.com/korodigergo/stackflow-react3) can be found in a separate repository.
 
@@ -12,7 +31,7 @@ Stackoverflow enables users to create new questions, post answers, and manage th
 - Backend: Java (Spring Boot 3) for handling requests and responses.
 - Database: PostgreSQL for efficient data management.
 
-## Built With
+### Built With
 
 * [![PostgreSQL][PostgreSQL.org]][PostgreSQL-url]
 * [![Spring][Spring.io]][Spring-url]
@@ -48,7 +67,7 @@ Stackoverflow enables users to create new questions, post answers, and manage th
    java -jar target/stackoverflow.jar
    ```
 
-### Features
+## Features
 
 - Register with fictional information (username and password).
 - Login to the site.
