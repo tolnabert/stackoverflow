@@ -34,7 +34,6 @@ Stackoverflow enables users to create new questions, post answers, and manage th
 - Backend: Java (Spring Boot 3) for handling requests and responses.
 - Database: PostgreSQL for efficient data management.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
