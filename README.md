@@ -9,6 +9,11 @@ Stackoverflow enables users to create new questions, post answers, and manage th
 - Backend: Java (Spring Boot 3) for handling requests and responses.
 - Database: PostgreSQL for efficient data management.
 
+## Built With
+
+* [![PostgreSQL][PostgreSQL.org]][PostgreSQL-url]
+* [![Spring][Spring.io]][Spring-url]
+
 ## Installation Guide
 
 ### 1. Clone this repository:
@@ -44,6 +49,12 @@ Stackoverflow enables users to create new questions, post answers, and manage th
 
 - Register with fictional information (username and password).
 - Login to the site.
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[Spring-url]: https://spring.io/projects/spring-boot
+[Spring.io]: https://img.shields.io/badge/Sring%20Boot-%236DB33F?style=for-the-badge&logo=springboot&logoColor=white
+[PostgreSQL-url]: https://www.postgresql.org/
+[PostgreSQL.org]: https://img.shields.io/badge/Postgre%20SQL-%234169E1?style=for-the-badge&logo=postgresql&logoColor=white
 - Post new questions.
 - Post new answers.
 - Manage your questions by deleting them.
